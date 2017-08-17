@@ -14,9 +14,13 @@
 public class Solution {
     public int minDepth(TreeNode root) {
         if (root == null) return 0;
+
+        // The node MUST be a leaf node to be valid. Thus we can't count
+        // +1 if the pointer is pointing to null. Simply find the min
+        // depth of the path that isn't null.
         if (root.right == null) return 1 + minDepth(root.left);
         if (root.left == null) return 1 + minDepth(root.right);
-        
+
         return 1 + Math.min(minDepth(root.left), minDepth(root.right));
     }
 }
